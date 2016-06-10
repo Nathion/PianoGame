@@ -131,7 +131,23 @@ class MIDISong {
     for (int i=0; i<activeTracks.length; i++) {
       activeTracks[i] = true;
     }
+    //oc(keys);
   }
+  
+  void oc(int[] keys){
+    ArrayList<OcKey> ocKeys = new ArrayList<OcKey>();
+    ocKeys.add(new OcKey(keys[0]));
+    for(int i = 1; i < keys.length; i++){
+      for(int q = 0; q < ocKeys.size();q++){
+        if(ocKeys.get(q).key == keys[i]){
+          ocKeys.get(q).oc++;
+          break;
+        }
+        ocKeys.add(new OcKey(keys[i]));
+      }
+    }
+  }
+
 
   void printNotes() {
     for (int i=0; i<MIDINotes.length; i++) {
