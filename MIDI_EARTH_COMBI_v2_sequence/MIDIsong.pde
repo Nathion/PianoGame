@@ -169,6 +169,7 @@ class MIDISong {
       }
     }
   }
+  
 
   void updateTicker() {
     tick+=speed;
@@ -314,7 +315,7 @@ class MIDISong {
               float xPosNote = cos(circleProgressionNote)*cirkleSize;
               float yPosNote = sin(circleProgressionNote)*cirkleSize;
               fill(200, 100, 100, 255);
-              ellipse(xPosNote, yPosNote, 20, 20);
+              ellipse(xPosNote, yPosNote, note.velocity, note.velocity);
             }
             /////////////////NOTES NEXT RESOLUTION/////////////////
             else if (note.startTick>=newResolution+fourResolutions

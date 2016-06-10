@@ -97,8 +97,13 @@ void keyPressed() {
     }
   }
   if (key == 'm') {  //ENTER MENU MODE
-    game.activeLevel = 0;
+    toMenu();
   }
+}
+
+void toMenu(){
+  game.activeLevel = 0;
+  game.activeLevelSequence = 0;
 }
 
 void play() {
