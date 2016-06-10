@@ -53,11 +53,11 @@ class MidiHandler
         if (sm.getCommand()==144) {
           keyz[sm.getData1()-36]=true;
           myBus.sendNoteOn(0, sm.getData1(), sm.getData2()); // Send a Midi noteOn
-          for (int i=0; i<MIDIsongs[activeSong].MIDINotes.length; i++) {
-            if (MIDIsongs[activeSong].MIDINotes[i].key==sm.getData1()+12) {
-              if (MIDIsongs[activeSong].MIDINotes[i].startTick<MIDIsongs[activeSong].tick
-                &&MIDIsongs[activeSong].MIDINotes[i].endTick>MIDIsongs[activeSong].tick) {
-                MIDIsongs[activeSong].MIDINotes[i].hit = true;
+          for (int i=0; i<MIDIsongs[game.activeSong].MIDINotes.length; i++) {
+            if (MIDIsongs[game.activeSong].MIDINotes[i].key==sm.getData1()+12) {
+              if (MIDIsongs[game.activeSong].MIDINotes[i].startTick<MIDIsongs[game.activeSong].tick
+                &&MIDIsongs[game.activeSong].MIDINotes[i].endTick>MIDIsongs[game.activeSong].tick) {
+                MIDIsongs[game.activeSong].MIDINotes[i].hit = true;
               }
             }
           }

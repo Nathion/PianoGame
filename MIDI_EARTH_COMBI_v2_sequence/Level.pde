@@ -1,4 +1,3 @@
-
 class Level { 
   color col;
   float tempo;
@@ -20,7 +19,8 @@ class Level {
   void display() {
     background(col);
   }
-
+  
+  /*
   void game(int activeLevel) {
     /////////////////LEVEL0/////////////////
     if (activeLevel==0) {
@@ -163,5 +163,5 @@ class Level {
       ellipse(0, 250, 10, 10);
       popMatrix();
     }
-  }
+  }*/
 }

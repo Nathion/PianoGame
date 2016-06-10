@@ -172,10 +172,11 @@ class MIDISong {
 
   void updateTicker() {
     tick+=speed;
+    /* REPLAY
     if (tick>=totalTicks) { //Is the song done?
       tick=0;
       stopMusic();
-    }
+    }*/
   }
 
   void displayTicker() {

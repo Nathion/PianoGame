@@ -1,6 +1,5 @@
 import javax.sound.midi.*;
 import themidibus.*;
-//Import other java libraries - WHAT DO THEY DO?
 import java.util.ArrayList;
 import java.util.List;
 import java.io.*;
@@ -12,21 +11,28 @@ MidiBus myBus;
 MidiHandler midiHandler;
 
 boolean playing = true;
+boolean songTool = false;
 boolean debug;
-String H = "HIT!";
 
 int levels = 6;
 Level lvls[] = new Level [levels];
-int activeLevel = 1;
-int activeSong = 2;
-int activeTrack = 0;
 boolean trackSelector;
 int totalNotes = 84;
 boolean keyz[] = new boolean [totalNotes+1];
 
+Game game; //Game class has all the functions and properties of the game
+//GamePlayStats gameplayStats; //Simple class that keeps track of game statistics
+PlayerStats playerStats; //Simple class that keeps track of player statistics
+Button[] buttons = new Button[4];
+int levelAmount; //The amount of levels
+int actAmount; //The amout of minigames each level has
+PImage earthIMG;
+PImage earthSpaceIMG;
+
 void setup() {
-  size(1000, 800);
-  smooth();//fullScreen();
+  size(1000, 900);
+  //fullScreen();
+  smooth();
 
   /////////////////LOADING SONGS/////////////////
   int MIDIfilesAmount = countFiles("E:/Bachelor Assignment/Processing/MIDI_files/");
@@ -54,28 +60,40 @@ void setup() {
   /////////////////OTHER/////////////////
   midiHandler = new MidiHandler(); //MIDIHandler registers objects that want to bind actions to MIDI and makes their MIDIresponders for them with the help of MIDIListener.
   //MIDIinfo(sequences[2]);
+
+  game = new Game();
+  //gameplayStats = new GamePlayStats();
+  playerStats = new PlayerStats();
+  //Creating buttons
+  buttons = new Button[4];
+  //directory, xpos, ypos, size
+  buttons[0] = new Button(0, 10, height-20, 20);
+  buttons[1] = new Button(1, width*0.3, height*0.4, 200);
+  buttons[2] = new Button(2, width*0.77, height*0.27, 20);
+  buttons[3] = new Button(3, width*1.35, height*0.30, 20);
+  levelAmount = 3;
+  actAmount = 3; 
+  earthIMG = loadImage("E:/Bachelor Assignment/Processing/IMG_files/Earth.jpg");
+  earthSpaceIMG = loadImage("E:/Bachelor Assignment/Processing/IMG_files/EarthSpace.png");
+  earthIMG.resize(0, height);
+  earthSpaceIMG.resize(width, height);
 }
 
 void draw() {
   background(255);
-
   /////////////////LEVELS/////////////////
-  lvls[activeLevel].display();
-  lvls[activeLevel].game(activeLevel);
-
-  /////////////////PLAYER/////////////////
-  MIDIsongs[activeSong].updateNotes();
-  MIDIsongs[activeSong].updateTicker();
-  MIDIsongs[activeSong].playNotes();
-
-  /////////////////DISPLAYS/////////////////
-  MIDIsongs[activeSong].displayPartSong();
-  MIDIsongs[activeSong].displayEntireSong(0.25, 600);
-  MIDIsongs[activeSong].displayTempoCircle();
+  //lvls[activeLevel].display();
+  //lvls[activeLevel].game(activeLevel);
+  game.update();
+  game.display();
 
   /////////////////DEBUGTEXT/////////////////
   fill(255, 102, 153);
   if (debug) {
-    text("Level :" + activeLevel, 10, 30);
+    text("Level :" + game.activeLevel, 10, 30);
   }
+  
+  if (game.activeLevel!=0&&songTool==false){
+    songTool=true;
+  }  
 }
