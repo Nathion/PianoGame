@@ -34,7 +34,7 @@ class Game {
     }
     if (activeLevel==1) {
       if (activeLevelSequence==0) {
-        activeSong=4;
+        activeSong=5;
         MIDIsongs[activeSong].updateNotes();
         MIDIsongs[activeSong].updateTicker();
         MIDIsongs[activeSong].playNotes();
@@ -44,7 +44,7 @@ class Game {
         }
       }
       if (activeLevelSequence==1) {
-        activeSong=4;
+        activeSong=5;
         MIDIsongs[activeSong].updateNotes();
         MIDIsongs[activeSong].updateTicker();
         MIDIsongs[activeSong].playNotes();

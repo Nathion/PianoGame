@@ -39,11 +39,12 @@ void setup() {
   File [] file = new File[MIDIfilesAmount]; //Create array with midifiles
   Sequence [] sequences = new Sequence[MIDIfilesAmount];
   MIDIsongs = new MIDISong[MIDIfilesAmount];
-  MIDIsonginator(file, sequences, 0, "E:/Bachelor Assignment/Processing/MIDI_files/1492_Conquest_of_Paradise.mid");
-  MIDIsonginator(file, sequences, 1, "E:/Bachelor Assignment/Processing/MIDI_files/test1.mid");
-  MIDIsonginator(file, sequences, 2, "E:/Bachelor Assignment/Processing/MIDI_files/MiddleEastern.mid");
-  MIDIsonginator(file, sequences, 3, "E:/Bachelor Assignment/Processing/MIDI_files/six_eight.mid");
-  MIDIsonginator(file, sequences, 4, "E:/Bachelor Assignment/Processing/MIDI_files/4beat.mid");
+  MIDIsonginator(file, sequences, 0, "/MIDI_files/1492_Conquest_of_Paradise.mid");
+  MIDIsonginator(file, sequences, 1, "/MIDI_files/test1.mid");
+  MIDIsonginator(file, sequences, 2, "/MIDI_files/MiddleEastern.mid");
+  MIDIsonginator(file, sequences, 3, "/MIDI_files/six_eight.mid");
+  MIDIsonginator(file, sequences, 4, "/MIDI_files/4beat.mid");
+  //MIDIsonginator(file, sequences, 5, "/MIE:/Bachelor Assignment/ProcessingI_files/4beatVelocityTest.mid");
 
   /////////////////SETTING MIDI BUS/////////////////
   //MidiBus.list(); //Print MIDI devices
