@@ -35,7 +35,7 @@ void setup() {
   smooth();
 
   /////////////////LOADING SONGS/////////////////
-  int MIDIfilesAmount = countFiles("E:/Bachelor Assignment/Processing/MIDI_files/");
+  int MIDIfilesAmount = countFiles(sketchFile("")+"/MIDI_files/");
   File [] file = new File[MIDIfilesAmount]; //Create array with midifiles
   Sequence [] sequences = new Sequence[MIDIfilesAmount];
   MIDIsongs = new MIDISong[MIDIfilesAmount];
@@ -44,7 +44,7 @@ void setup() {
   MIDIsonginator(file, sequences, 2, sketchFile("")+"/MIDI_files/MiddleEastern.mid");
   MIDIsonginator(file, sequences, 3, sketchFile("")+"/MIDI_files/six_eight.mid");
   MIDIsonginator(file, sequences, 4, sketchFile("")+"/MIDI_files/4beat.mid");
-  //MIDIsonginator(file, sequences, 5, "/MIE:/Bachelor Assignment/ProcessingI_files/4beatVelocityTest.mid");
+  MIDIsonginator(file, sequences, 5, sketchFile("")+"/MIDI_files/4beatVelocityTest.mid");
 
   /////////////////SETTING MIDI BUS/////////////////
   //MidiBus.list(); //Print MIDI devices
@@ -74,8 +74,8 @@ void setup() {
   buttons[3] = new Button(3, width*1.35, height*0.30, 20);
   levelAmount = 3;
   actAmount = 3; 
-  earthIMG = loadImage("E:/Bachelor Assignment/Processing/IMG_files/Earth.jpg");
-  earthSpaceIMG = loadImage("E:/Bachelor Assignment/Processing/IMG_files/EarthSpace.png");
+  earthIMG = loadImage(sketchFile("")+"/IMG_files/Earth.jpg");
+  earthSpaceIMG = loadImage(sketchFile("")+"/IMG_files/EarthSpace.png");
   earthIMG.resize(0, height);
   earthSpaceIMG.resize(width, height);
 }
