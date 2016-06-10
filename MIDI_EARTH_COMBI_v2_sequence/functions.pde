@@ -96,6 +96,9 @@ void keyPressed() {
       debug=true;
     }
   }
+  if (key == 'm') {  //ENTER MENU MODE
+    game.activeLevel = 0;
+  }
 }
 
 void play() {
