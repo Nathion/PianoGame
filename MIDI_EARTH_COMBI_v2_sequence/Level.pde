@@ -19,17 +19,16 @@ class Level {
   void display() {
     background(col);
   }
-  
-  
+
+
   void inputVisualizer(int activeLevel) {
     /////////////////LEVEL0/////////////////
     if (activeLevel==0) {
-      for (int i = 0; i < keyz.length; i++) {
+      for (int i = 0; i < totalNotes; i++) {
         if (keyz[i]) {
-          int barWidth = width/(totalNotes-1);
+          int barWidth = width/(totalNotes);
           fill(color(i*10, 0, i*5));
-          rectMode(CORNERS);
-          rect(i*barWidth, 0, (i+1)*barWidth, height);
+          rect(i*barWidth, 0, barWidth, height);
         }
       }
     }
