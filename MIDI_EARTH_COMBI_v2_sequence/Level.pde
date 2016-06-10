@@ -26,7 +26,7 @@ class Level {
     if (activeLevel==0) {
       for (int i = 0; i < totalNotes; i++) {
         if (keyz[i]) {
-          int barWidth = width/(totalNotes);
+          float barWidth = width/(float(totalNotes));
           fill(color(i*10, 0, i*5));
           rect(i*barWidth, 0, barWidth, height);
         }
