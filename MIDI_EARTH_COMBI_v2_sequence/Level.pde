@@ -20,15 +20,16 @@ class Level {
     background(col);
   }
   
-  /*
-  void game(int activeLevel) {
+  
+  void inputVisualizer(int activeLevel) {
     /////////////////LEVEL0/////////////////
     if (activeLevel==0) {
       for (int i = 0; i < keyz.length; i++) {
         if (keyz[i]) {
-          int barWidth = width/totalNotes;
+          int barWidth = width/(totalNotes-1);
           fill(color(i*10, 0, i*5));
-          rect(i*barWidth, 0, barWidth, height);
+          rectMode(CORNERS);
+          rect(i*barWidth, 0, (i+1)*barWidth, height);
         }
       }
     }
@@ -163,5 +164,5 @@ class Level {
       ellipse(0, 250, 10, 10);
       popMatrix();
     }
-  }*/
+  }
 }

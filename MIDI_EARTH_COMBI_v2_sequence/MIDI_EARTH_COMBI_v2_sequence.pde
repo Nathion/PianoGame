@@ -17,8 +17,10 @@ boolean debug;
 int levels = 6;
 Level lvls[] = new Level [levels];
 boolean trackSelector;
-int totalNotes = 84;
-boolean keyz[] = new boolean [totalNotes+1];
+int lowestKey = 36;
+int highestKey = 84;
+int totalNotes = highestKey - lowestKey + 1;
+boolean keyz[] = new boolean [totalNotes];
 
 Game game; //Game class has all the functions and properties of the game
 //GamePlayStats gameplayStats; //Simple class that keeps track of game statistics
@@ -39,7 +41,7 @@ void setup() {
   File [] file = new File[MIDIfilesAmount]; //Create array with midifiles
   Sequence [] sequences = new Sequence[MIDIfilesAmount];
   MIDIsongs = new MIDISong[MIDIfilesAmount];
-  MIDIsonginator(file, sequences, 0, sketchFile("")+"/MIDI_files/1492_Conquest_of_Paradise.mid");
+  MIDIsonginator(file, sequences, 0, sketchFile("")+"/MIDI_files/test1.mid");
   MIDIsonginator(file, sequences, 1, sketchFile("")+"/MIDI_files/test1.mid");
   MIDIsonginator(file, sequences, 2, sketchFile("")+"/MIDI_files/MiddleEastern.mid");
   MIDIsonginator(file, sequences, 3, sketchFile("")+"/MIDI_files/six_eight.mid");
@@ -82,6 +84,9 @@ void setup() {
 
 void draw() {
   background(255);
+  
+  lvls[0].inputVisualizer(0);
+  
   /////////////////LEVELS/////////////////
   //lvls[activeLevel].display();
   //lvls[activeLevel].game(activeLevel);
