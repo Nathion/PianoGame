@@ -3,6 +3,7 @@ class MIDISong {
   int MIDIcommands; //the amount of commands in the midifile
   MIDINote [] MIDINotes;
   int [] keys;
+  ArrayList<OccurenceKey> keyOccurences;
   int [] ticks;
   boolean [] keySwitch;
   int [] velocities;
@@ -131,21 +132,22 @@ class MIDISong {
     for (int i=0; i<activeTracks.length; i++) {
       activeTracks[i] = true;
     }
-    //oc(keys);
+    keyOccurences  = oc(MIDINotes);
   }
   
-  void oc(int[] keys){
-    ArrayList<OcKey> ocKeys = new ArrayList<OcKey>();
-    ocKeys.add(new OcKey(keys[0]));
-    for(int i = 1; i < keys.length; i++){
-      for(int q = 0; q < ocKeys.size();q++){
-        if(ocKeys.get(q).key == keys[i]){
-          ocKeys.get(q).oc++;
-          break;
+  ArrayList<OccurenceKey> oc(MIDINote[] MIDINotes){
+    ArrayList<OccurenceKey> occurenceKeys = new ArrayList<OccurenceKey>();
+    occurenceKeys.add(new OccurenceKey(MIDINotes[0].key));
+    keyloop : for(int i = 1; i < MIDINotes.length; i++){
+      for(int q = 0; q < occurenceKeys.size();q++){
+        if(occurenceKeys.get(q).key == MIDINotes[i].key){
+          occurenceKeys.get(q).oc++;
+          continue keyloop;
         }
-        ocKeys.add(new OcKey(keys[i]));
       }
+      occurenceKeys.add(new OccurenceKey(MIDINotes[i].key));
     }
+    return occurenceKeys;
   }
 
 

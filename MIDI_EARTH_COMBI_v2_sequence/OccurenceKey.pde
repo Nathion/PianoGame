@@ -1,7 +1,7 @@
-  class OcKey{
+  class OccurenceKey{
     int key;
     int oc = 1;
-    OcKey(int key_){
+    OccurenceKey(int key_){
       key = key_;
     }
   }
